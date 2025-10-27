@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration debug="true">
+	<!-- Appenders -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%d %5p [%c] %m%n</Pattern>
+		</encoder>   
+	</appender>
+
+	<appender name="console-infolog" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%d %5p %m%n</Pattern>
+		</encoder>   
+	</appender>
+
+	<logger name="board" level="DEBUG" appender-ref="console"/>
+	<logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog"/>
+	<logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog"/>
+	<logger name="org.big.aop.LoggerAspect" level="DEBUG"/>
+	<logger name="org.big.aop.TransactionAspect" level="DEBUG"/>
+	<logger name="org.big.interceptor.LoggerInterceptor" level="DEBUG"/>
+	<logger name="org.big.controller.BoardController" level="DEBUG"/>
+	<logger name="org.big.service.BoardServiceImpl" level="DEBUG"/>
+	<logger name="org.big.mapper.BoardMapper" level="DEBUG"/>
+	<logger name="org.springframework.jdbc" level="error"/>
+	
+    <root level="error">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>
