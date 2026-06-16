@@ -1,0 +1,44 @@
+git config --global user.name "gildong-hong"
+git config --global user.email "mightmars@hanmail.net"
+
+git init  #현재 폴더를 git 저장소로 지정
+
+git config --global init.defaultBranch main   #기본 브랜치명을 main으로 사용(힌트메세지 삭제)
+
+git branch -m main   #브랜치 이름을 main으로 변경
+
+
+git 프로젝트 개발
+-------------------------------------------------------------------------------------------
+1. 작업 할당 및 중앙 저장소 동기화
+최신 코드 동기화: 개발을 시작하기 전, 중앙 원격 저장소(origin)의 최신 소스코드를 로컬 컴퓨터로 가져온다.
+echo "hello" > README.md   #프로젝트 폴더내에 텍스트 파일 생성
+git add README.md   #파일을 git에 등록
+git commit -m "first commit"   #커밋
+
+git switch -c develop #develop 브런치 만들기
+git branch  #브런치 확인
+
+
+git checkout develop   #현재 작업 브런치에서 develop 브런치로 이동 
+git pull origin develop  #원격 저장소(origin)에 있는 develop의 최신 코드를 다운로드 해서 현재 내가 작업중인 로컬 브런치에 곧바로 합치라(Merge)는 의미이다.
+
+2. 기능 개발을 위한 독립 브랜치 생성
+브랜치 분리: 메인 코드에 영향을 주지 않도록 반드시 develop 브랜치나 최신 배포 브랜치로부터 독립된 작업 브랜치를 생성한다.
+네이밍 규칙 준수: 기업의 규칙에 맞게 브랜치 이름을 명명한다. (feature/이슈번호-기능명, bugfix/이슈번호-수정내용))
+
+git switch -c feature/projectName-login-api    #로그인 기능 구현
+git checkout -b feature/projectName-login-api    #project의 로그인 기능
+
+3. 로컬 환경에서 기능 개발 및 단위 커밋
+코드 작성: 할당된 업무에 맞는 소스코드를 작성하고 수정한다.
+의미 있는 커밋 생성: 변경된 파일을 스테이징 영역에 추가하고, 하나의 변경 단위마다 커밋을 남긴다.
+커밋 메시지 규칙(Convention) 준수: 기업에서 정의한 규칙(예: Feat: 로그인 API 구현, Fix: 토큰 만료 오류 수정)에 맞추어 상세히 작성한다.
+
+git add .      #현재 폴더 안에서 내가 변경한 모든 파일들을 추가한다.
+git commit -m "Feat: Implement login password validation"       #"로그인 비밀번호 검증 기능을 구현했다는 메시지와 함께, 변경 사항을 최종 저장하겠다"는 명령어이다.
+
+
+
+
+
